@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f4957d2517.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Simplifier Exchange 2.0</title>
+</head>
+
+<body>
+    <h1>Simplifier Exchange 2.0</h1>
+    <div class="conversor">
+        <div>
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" placeholder="Ingrese el monto">
+        </div>
+        <div>
+            <label for="monedaOrigen">Moneda de Origen:</label>
+            <select id="monedaOrigen"></select>
+        </div>
+        <div>
+            <label for="monedaDestino">Moneda de Destino:</label>
+            <select id="monedaDestino"></select>
+        </div>
+        <button id="btnConvertir"><i class="fa-sharp fa-regular fa-dollar-sign"></i>Convertir</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
