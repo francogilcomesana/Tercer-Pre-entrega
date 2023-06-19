@@ -30,7 +30,7 @@ function generarOpcionesMoneda() {
   }
 }
 
-// Función para convertir divisas
+// Función para convertir divisas S. ALERT
 function convertirDivisas() {
   const monto = parseFloat(document.getElementById("monto").value);
   const monedaOrigen = document.getElementById("monedaOrigen").value;
@@ -41,14 +41,42 @@ function convertirDivisas() {
   const tasaConversion = tasaDestino / tasaOrigen;
 
   const resultado = monto * tasaConversion;
-  mostrarResultado(resultado);
+
+  Swal.fire({
+    title: 'Confirmación',
+    text: `¿Deseas convertir ${monto} ${monedaOrigen} a ${monedaDestino}?`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Convertir',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      mostrarResultado(resultado);
+    }
+  });
 }
 
-// Función para mostrar el resultado
+// Llamando API
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '84b4132d9amsh3f0cd7342faae67p196b72jsn5acd0a7958f0',
+		'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+	}
+};
+
+fetch("https://currency-exchange.p.rapidapi.com/exchange?from=SGD&to=MYR&q=1.0", options)
+.then(res => res.json())
+.then(res => console.log(res))
 function mostrarResultado(resultado) {
-  const resultadoDiv = document.getElementById("resultado");
-  resultadoDiv.textContent = `El resultado es: ${resultado}`;
+  Swal.fire({
+    title: 'Resultado',
+    text: `El resultado es: ${resultado}`,
+    icon: 'success',
+    confirmButtonText: 'Aceptar'
+  });
 }
+
 
 // Evento que se dispara cuando el DOM ha cargado
 document.addEventListener("DOMContentLoaded", function() {
